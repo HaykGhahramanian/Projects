@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666;
+    }
+
+    .form-group input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <form action="{{ url_for('register') }}" method="post" enctype="multipart/form-data">
+      {{ form.csrf_token }}
+      <div class="form-group">
+        {{ form.username(class="form-group", placeholder="Enter your username") }}
+      </div>
+      <div class="form-group">
+        {{ form.password(class="form-group", placeholder="Enter your password") }}
+      </div>
+       <div class="form-group">
+        {{ form.email(class="form-group", placeholder="Enter your email") }}
+      </div>
+       <div>
+           {{ form.photo(class="form-control-file", type="file") }}
+         <input type="file" name="photo">
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

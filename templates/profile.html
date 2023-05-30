@@ -1,0 +1,71 @@
+<!-- profile.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-image {
+            margin-bottom: 20px;
+        }
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-details {
+            margin-bottom: 20px;
+        }
+        .profile-details h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .profile-details p {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+           .logout-button {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: Arial, sans-serif;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-image">
+            <img src="{{ current_user.photo }}">
+        </div>
+        <div class="profile-details">
+            <h2 style="color: black;">Username: {{ current_user.username }}</h2>
+            <p style="color: black;">Email: {{ current_user.email }}</p>
+        </div>
+
+<form action="/submit_comment" method="POST">
+ <a class="logout-button" href="{{ url_for('logout') }}">Logout</a>
+</form>
+    </div>
+</body>
+</html>
+
+
