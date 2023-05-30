@@ -66,9 +66,10 @@ def delete():
     a = True
     if a:
         delete_letter = Tweets.query.filter_by(user_id=current_user.id).order_by(Tweets.date_created.desc()).first()
-        db.session.delete(delete_letter)
-        db.session.commit()
-        return redirect(url_for('letters'))
+        if delete_letter:
+            db.session.delete(delete_letter)
+            db.session.commit()
+            return redirect(url_for('letters'))
 
     return render_template('index.html')
 
