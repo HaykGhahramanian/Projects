@@ -1,27 +1,19 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, FileField, TextAreaField
-from wtforms.validators import InputRequired, Length
+from forms import RegisterForm, LoginForm, TweetForm
 from flask_migrate import Migrate
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-# from flask_uploads import UploadSet, IMAGES, configure_uploads
+
 
 
 app = Flask(__name__)
 
-# photos = UploadSet('photos', IMAGES)
 
-# app.config['UPLOADED_PHOTOS_DEST'] = 'images'
 app.config['SECRET_KEY'] = 'MYSECRETKEY!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/User/PycharmProjects/pythonProject2/Flask_Project/wot.db'
-# app.config['UPLOAD_FOLDER'] = 'uploads'
-# app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 
-
-# configure_uploads(app, photos)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -52,24 +44,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class RegisterForm(FlaskForm):
-    username = StringField('Username:', validators=[InputRequired('Your username required!'), Length(max=30,
-                                                                                                     message='You can not input username that will be more than 30 characters')])
-    password = PasswordField('Password:', validators=[InputRequired('Your password required!'),
-                                                      Length(max=15, message='Can not be more than 15 characters')])
-    email = StringField('Email', validators=[InputRequired('Your email required!')])
-    photo = FileField('Photo')
-
-
-class LoginForm(FlaskForm):
-    email = StringField('Email: ', validators=[InputRequired('Your email required!')])
-    password = PasswordField('Password: ', validators=[InputRequired('Your password required!')])
-
-
-class TweetForm(FlaskForm):
-    letter = TextAreaField('Letter')
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
@@ -77,10 +51,7 @@ def index():
 
 @app.route('/home')
 def home():
-    check_login = False
-    if current_user.is_authenticated:
-        check_login = True
-    return render_template('main.html', user_logged_in=check_login)
+    return render_template('main.html', user_logged_in=current_user.is_authenticated)
 
 
 @app.route('/letters')
@@ -102,6 +73,8 @@ def delete():
     return render_template('index.html')
 
 
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
@@ -109,7 +82,7 @@ def register():
     if form.validate_on_submit():
         new_user = User(username=form.username.data, password=generate_password_hash(form.password.data),
                         email=form.email.data,
-                        photo=image_url)
+                        photo=form.photo.data)
         db.session.add(new_user)
         db.session.commit()
 
