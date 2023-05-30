@@ -70,8 +70,8 @@ def delete():
             db.session.delete(delete_letter)
             db.session.commit()
             return redirect(url_for('letters'))
-
-    return render_template('index.html')
+        else:
+            return "You haven't any letters"
 
 
 
@@ -102,7 +102,10 @@ def login():
                 login_user(user)
                 return redirect(url_for('profile'))
             else:
-                return redirect(url_for('index'))
+              return "Your login or password are incorrect"
+
+        else:
+            return "Your login or password are incorrect"
 
     return render_template('login.html', form=form)
 
