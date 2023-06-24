@@ -58,7 +58,7 @@ def register():
         if photo and allowed_file(photo.filename):
             filename = secure_filename(photo.filename)
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            photo_url = url_for('/home/hayk/Desktop/MyFlaskProject/Projects', filename='photos/' + filename)
+            photo_url = url_for('static', filename='photos/' + filename)
         new_user = User(
             username=form.username.data,
             password=generate_password_hash(form.password.data),
