@@ -54,11 +54,11 @@
     <div class="container">
         <h1>User Profile</h1>
         <div class="profile-image">
-            <img src="{{ current_user.photo }}">
+            <img src="{{ our_user.photo }}">
         </div>
         <div class="profile-details">
-            <h2 style="color: black;">Username: {{ current_user.username }}</h2>
-            <p style="color: black;">Email: {{ current_user.email }}</p>
+            <h2 style="color: black;">Username: {{ our_user.user.username }}</h2>
+            <p style="color: black;">Email: {{ our_user.user.email }}</p>
         </div>
 
 <form action="/submit_comment" method="POST">

@@ -138,11 +138,12 @@
 <div id="comments-wrapper" class="comments-wrapper">
     <div id="comments-container">
         <h1>Tweets</h1>
-        {% for letter in letters %}
-        <div class="comments-container">
-            <h3>{{ letter.user.email }}</h3>
-            <p>{{  letter.letter }}</p>
-        </div>
+     {% for tweet in tweets %}
+            <div class="comment-container">
+                <p>Letter: {{ tweet.tweet.letter }}</p>
+                <p>Email: {{ tweet.user.email }}</p>
+                <hr>
+            </div>
         {% endfor %}
     </div>
 </div>

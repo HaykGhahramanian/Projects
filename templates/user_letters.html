@@ -32,6 +32,7 @@
 
         /* Add more styles as needed */
 
+
     </style>
 </head>
 <body>
@@ -39,11 +40,12 @@
     <p>This is {{ current_user.username }}'s letter</p>
 </div>
 <div class="main-container">
-  {% for tweet in user %}
+    {% for tweet in tweets %}
     <div class="letter-container">
-       {{ tweet.letter }}
+        <p>Letter: {{ tweet.tweet.letter }}</p>
     </div>
-  {% endfor %}
+    {% endfor %}
+
 </div>
 </body>
 </html>
