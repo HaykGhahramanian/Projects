@@ -2,11 +2,12 @@
 <!-- Website - www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Website Design HTML CSS | CodingNepal</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" />
-  <style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Simple Website Design HTML CSS | CodingNepal</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"/>
+    <style>
     * {
       margin: 0;
       padding: 0;
@@ -143,33 +144,36 @@
       background: white;
       color: black;
     }
-  </style>
+
+    </style>
 </head>
 <body>
-  <nav>
+<nav>
     <div class="menu">
-      <div class="logo">
-        <a href="#">WOT</a>
-      </div>
-      <ul>
-        <li><a href="{{ url_for('letters') }}">Letters</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/Social_network#:~:text=A%20social%20network%20is%20a,other%20social%20interactions%20between%20actors.">About</a></li>
-        {% if user_logged_in %}
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        <li><a href="{{ url_for('profile') }}">Profile</a></li>
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        {% endif %}
-      </ul>
+        <div class="logo">
+            <a href="#">WOT</a>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('letters') }}">Letters</a></li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Social_network#:~:text=A%20social%20network%20is%20a,other%20social%20interactions%20between%20actors.">About</a>
+            </li>
+            {% if user_logged_in %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+        </ul>
     </div>
-  </nav>
-  <div class="img"></div>
-  <div class="center">
-        <div class="sub_title">Communicate with each other</div>
+</nav>
+<div class="img"></div>
+<div class="center">
+    <div class="sub_title">Communicate with each other</div>
 
     <div class="btns">
     </div>
-  </div>
+</div>
 </body>
 </html>

@@ -1,5 +1,3 @@
-<!-- profile.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,26 +46,30 @@
         .logout-button:hover {
             background-color: #c0392b;
         }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>User Profile</h1>
-        <div class="profile-image">
-            <img src="{{ our_user.photo }}">
-        </div>
+<div class="container">
+    <h1>User Profile</h1>
+    <div class="profile-image">
+        {% if our_user.photo %}
+        <img src="{{ url_for('static', filename='photo/' + our_user.user.photo) }}">
+        {% else %}
+        <p>No photo available</p>
+        {% endif %}
         <div class="profile-details">
             <h2 style="color: black;">Username: {{ our_user.user.username }}</h2>
             <p style="color: black;">Email: {{ our_user.user.email }}</p>
         </div>
 
-<form action="/submit_comment" method="POST">
- <a class="logout-button" href="{{ url_for('logout') }}">Logout</a>
-</form>
+        <form action="/submit_comment" method="POST">
+            <a class="logout-button" href="{{ url_for('logout') }}">Logout</a>
+        </form>
         <br>
         <form action="/submit_comment" method="POST">
- <a class="logout-button" href="{{ url_for('letters') }}">Letters</a>
-</form>
+            <a class="logout-button" href="{{ url_for('letters') }}">Letters</a>
+        </form>
     </div>
 </body>
 </html>

@@ -16,7 +16,6 @@
 <!--</div>-->
 
 
-
 <!--<style>-->
 <!--    body {-->
 <!--        display: flex;-->
@@ -127,6 +126,7 @@
     .fcc-btn:hover {
         transform: scale(1.05);
     }
+
 </style>
 
 <div class="button-container">
@@ -138,12 +138,12 @@
 <div id="comments-wrapper" class="comments-wrapper">
     <div id="comments-container">
         <h1>Tweets</h1>
-     {% for tweet in tweets %}
-            <div class="comment-container">
-                <p>Letter: {{ tweet.tweet.letter }}</p>
-                <p>Email: {{ tweet.user.email }}</p>
-                <hr>
-            </div>
+        {% for tweet in tweets %}
+        <div class="comment-container">
+            <p>Letter: {{ tweet.tweet.letter }}</p>
+            <p>Email: {{ tweet.user.email }}</p>
+            <hr>
+        </div>
         {% endfor %}
     </div>
 </div>

@@ -41,21 +41,20 @@
             resize: vertical;
         }
 
-        /* Add more styles as needed */
 
     </style>
 </head>
 <body>
 
 <form action="{{ url_for('post_letter') }}" method="POST">
-  <div>
-      <textarea name="letter" rows="4" cols="50" placeholder="Enter your letter"></textarea>
-      <br>
-      <div class="form-group">
-        <input type="submit" value="Post">
-      </div>
-  </div>
-  <br>
+    <div>
+        <textarea name="letter" rows="4" cols="50" placeholder="Enter your letter"></textarea>
+        <br>
+        <div class="form-group">
+            <input type="submit" value="Post">
+        </div>
+    </div>
+    <br>
 </form>
 </body>
 </html>

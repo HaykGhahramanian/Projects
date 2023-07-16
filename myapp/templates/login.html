@@ -75,12 +75,11 @@
 <!--</html>-->
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login Form</title>
-  <style>
+    <title>Login Form</title>
+    <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -129,34 +128,35 @@
     .form-group input[type="submit"]:hover {
       background-color: #45a049;
     }
-  </style>
+
+    </style>
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <h2>Login</h2>
     <form action="{{ url_for('login') }}" method="POST">
         {% for message in get_flashed_messages() %}
-    <div class="flash-message">
-        {{ message }}
-    </div>
-{% endfor %}
-<br>
-      {{ form.csrf_token }}
-      <div class="form-group">
-<!--        <label for="email">Email</label>-->
-<!--        <input type="email" id="email" name="email" required>-->
-        {{ form.email(type="email", placeholder="Enter your email") }}
-      </div>
-      <div class="form-group">
-<!--        <label for="password">Password</label>-->
-<!--        <input type="password" id="password" name="password" required>-->
-        {{ form.password(type="password", placeholder="Enter your password") }}
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Login">
-      </div>
+        <div class="flash-message">
+            {{ message }}
+        </div>
+        {% endfor %}
+        <br>
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <!--        <label for="email">Email</label>-->
+            <!--        <input type="email" id="email" name="email" required>-->
+            {{ form.email(type="email", placeholder="Enter your email") }}
+        </div>
+        <div class="form-group">
+            <!--        <label for="password">Password</label>-->
+            <!--        <input type="password" id="password" name="password" required>-->
+            {{ form.password(type="password", placeholder="Enter your password") }}
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login">
+        </div>
     </form>
-  </div>
+</div>
 </body>
 </html>
 
